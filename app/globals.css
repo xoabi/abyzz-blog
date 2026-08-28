@@ -10,6 +10,13 @@
   --border: #e5e5e5;
   --ring: #0066ff;
   --frame: #ffffff;
+
+  --hunter-accent: #69655f;
+  --spider-accent: #665087;
+  --chain-accent: #955747;
+
+  --surface-subtle: rgba(0, 0, 0, 0.025);
+
   --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
@@ -23,6 +30,12 @@
   --border: #262626;
   --ring: #3b82f6;
   --frame: #0a0a0a;
+
+  --hunter-accent: #aaa49a;
+  --spider-accent: #8a70aa;
+  --chain-accent: #b16c58;
+
+  --surface-subtle: rgba(255, 255, 255, 0.025);
 }
 
 @theme inline {
@@ -216,4 +229,78 @@ html[data-theme-anim="1"]::view-transition-new(root) {
 
 .project-card:hover .project-card__image-inner {
   transform: scale(1.06);
+}
+
+.side-card {
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    border-color 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.side-card::after {
+  content: "";
+  position: absolute;
+
+  left: 24px;
+  right: 24px;
+  bottom: 0;
+
+  height: 1px;
+
+  opacity: 0;
+
+  transform: scaleX(0.75);
+
+  transition:
+    opacity 350ms ease,
+    transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.side-card:hover {
+  transform: translateY(-2px);
+}
+
+.side-card:hover::after {
+  opacity: 0.7;
+  transform: scaleX(1);
+}
+
+.side-card--spider:hover {
+  border-color: color-mix(
+    in srgb,
+    var(--spider-accent) 30%,
+    var(--border)
+  );
+
+  background-color: color-mix(
+    in srgb,
+    var(--spider-accent) 3%,
+    var(--background)
+  );
+}
+
+.side-card--spider::after {
+  background: var(--spider-accent);
+}
+
+.side-card--chain:hover {
+  border-color: color-mix(
+    in srgb,
+    var(--chain-accent) 30%,
+    var(--border)
+  );
+
+  background-color: color-mix(
+    in srgb,
+    var(--chain-accent) 3%,
+    var(--background)
+  );
+}
+
+.side-card--chain::after {
+  background: var(--chain-accent);
 }

@@ -1,53 +1,94 @@
+import { FadeIn } from "@/components/ui/motion-primitives";
+import Link from "next/link";
 import type { ReactNode } from "react";
-
-import { HeroCtas } from "./hero-ctas";
-import { FadeIn, ScaleUnblur } from "@/components/ui/motion-primitives";
-import { PortraitMorph } from "./portrait-morph";
-
-const PORTRAIT_SRC = "/josh.webp";
-const PORTRAIT_HOVER_SRC = "/josh_wave.webp";
 
 export function Hero(): ReactNode {
   return (
-    <section className="relative w-full">
-      <div className="mx-auto w-full max-w-275 px-6 pt-44 pb-24 sm:px-10 sm:pt-56 sm:pb-32">
-        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-8">
-          <FadeIn className="flex flex-col gap-4">
-            <p className="text-[20px] leading-tight tracking-tight font-medium text-foreground">
-              Hey
-              <span aria-hidden="true" className="mx-0.5">
-                👋
-              </span>
-              , I&rsquo;m Josh
-            </p>
+    <section className="relative flex min-h-screen w-full items-center">
+      <div className="mx-auto w-full max-w-275 px-6 py-32 sm:px-10">
+        <FadeIn className="flex flex-col">
+          <div className="mb-12 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.24em] text-foreground/45">
+            <span>Hunter Database</span>
+            <span className="h-px w-8 bg-foreground/15" />
+            <span>00</span>
+          </div>
 
-            <h1 className="text-[2.75rem] font-medium leading-[1.05] tracking-tight text-foreground md:text-[2.5rem] lg:text-[3.65rem]">
-              <span className="block whitespace-nowrap">
-                Design engineer &
-              </span>
-              <span className="block whitespace-nowrap">AI enthusiast</span>
-            </h1>
+          <p className="mb-3 font-mono text-sm text-foreground/55">
+            registered hunter
+          </p>
 
-            <p className="max-w-[34ch] text-[22px] leading-[1.4] tracking-tight text-foreground/65">
-              Independent engineer focused on interfaces that feel calm,
-              considered, and quietly fast.
-            </p>
+          <h1 className="font-serif text-[4.5rem] leading-none tracking-[-0.06em] text-foreground sm:text-[6rem] md:text-[8rem] lg:text-[10rem]">
+            .abyzz
+          </h1>
 
-            <HeroCtas />
-          </FadeIn>
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/55 sm:text-xl">
+            Cybersecurity, digital forensics, CTFs, experiments, tools,
+            research and things I learn along the way.
+          </p>
 
-          <ScaleUnblur className="flex justify-stretch md:justify-end">
-            <div className="relative aspect-square w-full md:max-w-105 overflow-hidden rounded-4xl border border-foreground/8 bg-background p-1.5 shadow-sm">
-              <div className="relative h-full w-full overflow-hidden rounded-[1.6rem]">
-                <PortraitMorph
-                  srcA={PORTRAIT_SRC}
-                  srcB={PORTRAIT_HOVER_SRC}
-                  alt="Josh portrait"
-                />
+          <div className="mt-16 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-2">
+            <Link
+              href="/operations"
+              className="side-card side-card--spider group rounded-2xl border border-foreground/10 bg-background/30 p-6"
+            >
+              <div className="mb-8 flex items-center justify-between">
+                <span
+                  className="font-mono text-[11px] uppercase tracking-[0.2em]"
+                  style={{ color: "var(--spider-accent)" }}
+                >
+                  01 / Execution
+                </span>
+
+                <span className="text-foreground/25 transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
               </div>
-            </div>
-          </ScaleUnblur>
-        </div>
+
+              <h2 className="font-serif text-3xl tracking-tight">
+                The Spider
+              </h2>
+
+              <p className="mt-2 max-w-sm text-sm leading-relaxed text-foreground/50">
+                Operations, CTFs, projects, tools and experiments.
+              </p>
+            </Link>
+
+            <Link
+              href="/archive"
+              className="side-card side-card--chain group rounded-2xl border border-foreground/10 bg-background/30 p-6"
+            >
+              <div className="mb-8 flex items-center justify-between">
+               <span
+                  className="font-mono text-[11px] uppercase tracking-[0.2em]"
+                  style={{ color: "var(--chain-accent)" }}
+                >
+                  02 / Investigation
+                </span>
+
+                <span className="text-foreground/25 transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </div>
+
+              <h2 className="font-serif text-3xl tracking-tight">
+                The Chain
+              </h2>
+
+              <p className="mt-2 max-w-sm text-sm leading-relaxed text-foreground/50">
+                Case files, knowledge, research, credentials and evidence.
+              </p>
+            </Link>
+          </div>
+
+          <div className="mt-12 flex items-center gap-5">
+            <Link
+              href="/license"
+              className="font-mono text-xs uppercase tracking-[0.18em] text-foreground/45 transition-colors hover:text-foreground"
+            >
+              Hunter License →
+            </Link>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );
