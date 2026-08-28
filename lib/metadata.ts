@@ -9,7 +9,7 @@ export const siteConfig = {
   creator: ".abyzz",
   authors: [
     {
-      name: "Abijith Saravanan Anna",
+      name: "Abijith Anna",
       url: "https://example.com",
     },
   ],
