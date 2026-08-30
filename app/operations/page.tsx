@@ -64,7 +64,7 @@ export default async function OperationsPage(): Promise<ReactNode> {
               <Link
                 key={operation.slug}
                 href={`/operations/${operation.slug}`}
-                className="group grid gap-5 py-7 sm:grid-cols-[40px_1fr_auto]"
+                className="cursor-target group grid gap-5 py-7 sm:grid-cols-[40px_1fr_auto]"
               >
                 <span className="pt-1 font-mono text-[10px] text-foreground/25">
                   {String(index + 1).padStart(2, "0")}

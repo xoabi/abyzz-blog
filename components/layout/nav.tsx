@@ -2,7 +2,7 @@
 
 import { Moon, Sun } from "lucide-react";
 import { motion } from "motion/react";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/components/layout/theme-provider";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -107,7 +107,7 @@ function NavThemeToggle(): ReactNode {
             : "Switch to dark theme"
           : "Toggle theme"
       }
-      className="focus-ring relative inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-foreground/8 bg-background/60 transition-colors hover:bg-foreground/5"
+      className="cursor-target focus-ring relative inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-foreground/8 bg-background/60 transition-colors hover:bg-foreground/5"
     >
       <span aria-hidden="true" className="relative h-4 w-4">
         <Sun
@@ -187,7 +187,7 @@ export function Nav(): ReactNode {
       <div className="mx-auto flex w-full max-w-275 items-center justify-between">
         <Link
           href="/"
-          className="group flex items-center gap-2 font-mono text-sm tracking-[-0.02em]"
+          className="cursor-target group flex items-center gap-2 font-mono text-sm tracking-[-0.02em]"
         >
           <span
             className="h-1.5 w-1.5 rounded-full transition-colors duration-500"
@@ -244,7 +244,7 @@ export function Nav(): ReactNode {
                   <Link
                     href={item.href}
                     aria-current={isActive ? "page" : undefined}
-                    className="focus-ring relative inline-flex items-center justify-center rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-colors"
+                    className="cursor-target focus-ring relative inline-flex items-center justify-center rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-colors"
                   >
                     <span
                       className={
