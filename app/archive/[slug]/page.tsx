@@ -63,7 +63,7 @@ export default async function ArchiveEntryPage({
   return (
     <main
       id="main-content"
-      className="mx-auto min-h-screen w-full max-w-275 px-6 pb-32 pt-36 sm:px-10 sm:pt-40"
+      className="mx-auto min-h-screen w-full max-w-275 px-6 pb-28 pt-36 sm:px-10 sm:pt-40"
     >
       <article className="mx-auto max-w-3xl">
         <header>
@@ -78,11 +78,11 @@ export default async function ArchiveEntryPage({
             {frontmatter.title}
           </h1>
 
-          <p className="mt-6 max-w-2xl text-base leading-7 text-foreground/55">
+          <p className="mt-6 max-w-2xl text-base leading-7 text-text-secondary">
             {frontmatter.summary}
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 border-y border-foreground/8 py-4 font-mono text-[10px] uppercase tracking-[0.14em] text-foreground/35">
+          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 border-y border-foreground/8 py-4 font-mono text-[11px] uppercase tracking-[0.14em] text-text-tertiary">
             <span>{frontmatter.category}</span>
             <time>{frontmatter.date}</time>
           </div>
@@ -91,22 +91,22 @@ export default async function ArchiveEntryPage({
         <div
           className="
             mt-16
-            text-[15px]
-            leading-7
-            text-foreground/65
+            text-[16px]
+            leading-8
+            text-text-secondary
 
             [&_h2]:mb-5
-            [&_h2]:mt-14
+            [&_h2]:mt-16
             [&_h2]:font-serif
             [&_h2]:text-3xl
             [&_h2]:tracking-tight
             [&_h2]:text-foreground
 
             [&_h3]:mb-4
-            [&_h3]:mt-10
+            [&_h3]:mt-12
             [&_h3]:text-xl
             [&_h3]:font-medium
-            [&_h3]:text-foreground/90
+            [&_h3]:text-text-primary
 
             [&_p]:my-5
 
@@ -129,8 +129,8 @@ export default async function ArchiveEntryPage({
             [&_pre]:overflow-x-auto
             [&_pre]:rounded-xl
             [&_pre]:border
-            [&_pre]:border-foreground/10
-            [&_pre]:bg-foreground/[0.035]
+            [&_pre]:border-border
+            [&_pre]:bg-surface-raised
             [&_pre]:p-5
             [&_pre]:font-mono
             [&_pre]:text-sm
