@@ -104,6 +104,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
     const originalCursor = document.body.style.cursor;
     if (hideDefaultCursor) {
       document.body.style.cursor = 'none';
+      document.documentElement.dataset.customCursor = "true";
     }
 
     const cursor = cursorRef.current;
@@ -204,6 +205,14 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
     window.addEventListener('mousedown', mouseDownHandler);
     window.addEventListener('mouseup', mouseUpHandler);
 
+    const clickHandler = () => {
+        if (activeTarget && currentLeaveHandler) {
+            currentLeaveHandler();
+        }
+    };
+
+    window.addEventListener("click", clickHandler);
+
     const enterHandler = (e: MouseEvent) => {
       const directTarget = e.target as Element;
       const allTargets: Element[] = [];
@@ -232,20 +241,35 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       spinTl.current?.pause();
       gsap.set(cursorRef.current, { rotation: 0 });
 
-      if (cursorColorOnTarget) {
+      const targetTone = target.getAttribute("data-cursor-tone");
+
+        const rootStyles = getComputedStyle(document.documentElement);
+
+        const toneColor =
+        targetTone === "spider"
+            ? rootStyles.getPropertyValue("--spider-accent").trim()
+            : targetTone === "chain"
+            ? rootStyles.getPropertyValue("--chain-accent").trim()
+            : targetTone === "hunter"
+                ? rootStyles.getPropertyValue("--hunter-accent").trim()
+                : cursorColorOnTarget;
+
+        const activeCursorColor =
+          toneColor || cursorColor;
+
         gsap.to(corners, {
-          borderColor: cursorColorOnTarget,
-          duration: 0.15,
-          ease: 'power2.out'
-        });
-        if (dotRef.current) {
-          gsap.to(dotRef.current, {
-            backgroundColor: cursorColorOnTarget,
+            borderColor: activeCursorColor,
             duration: 0.15,
-            ease: 'power2.out'
-          });
+            ease: "power2.out",
+        });
+
+        if (dotRef.current) {
+         gsap.to(dotRef.current, {
+            backgroundColor: activeCursorColor,
+            duration: 0.15,
+            ease: "power2.out",
+         });
         }
-      }
 
       const rect = target.getBoundingClientRect();
       const { borderWidth, cornerSize } = constants;
@@ -353,11 +377,13 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       window.removeEventListener('resize', resizeHandler);
       window.removeEventListener('mousedown', mouseDownHandler);
       window.removeEventListener('mouseup', mouseUpHandler);
+      window.removeEventListener("click", clickHandler);
       if (activeTarget) {
         cleanupTarget(activeTarget);
       }
       spinTl.current?.kill();
       document.body.style.cursor = originalCursor;
+      delete document.documentElement.dataset.customCursor;
       isActiveRef.current = false;
       targetCornerPositionsRef.current = null;
       activeStrengthRef.current.current = 0;

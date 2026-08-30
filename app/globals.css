@@ -325,3 +325,13 @@ html[data-theme-anim="1"]::view-transition-new(root) {
 .side-card--chain::after {
   background: var(--chain-accent);
 }
+
+@media (hover: hover) and (pointer: fine) {
+  html[data-custom-cursor="true"],
+  html[data-custom-cursor="true"] body,
+  html[data-custom-cursor="true"] a,
+  html[data-custom-cursor="true"] button,
+  html[data-custom-cursor="true"] .cursor-target {
+    cursor: none !important;
+  }
+}

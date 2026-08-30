@@ -64,6 +64,7 @@ export default async function OperationsPage(): Promise<ReactNode> {
               <Link
                 key={operation.slug}
                 href={`/operations/${operation.slug}`}
+                data-cursor-tone="spider"
                 className="cursor-target group grid gap-5 py-7 sm:grid-cols-[40px_1fr_auto]"
               >
                 <span className="pt-1 font-mono text-[10px] text-foreground/25">

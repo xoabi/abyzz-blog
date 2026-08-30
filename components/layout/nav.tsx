@@ -17,14 +17,15 @@ import {
 type NavItem = {
   label: string;
   href: string;
+  tone: "hunter" | "spider" | "chain";
 };
 
 const NAV_ITEMS: readonly NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "Operations", href: "/operations" },
-  { label: "Archive", href: "/archive" },
-  { label: "Projects", href: "/projects" },
-  { label: "License", href: "/license" },
+  { label: "Home", href: "/", tone: "hunter" },
+  { label: "Operations", href: "/operations", tone: "spider" },
+  { label: "Archive", href: "/archive", tone: "chain" },
+  { label: "Projects", href: "/projects", tone: "spider" },
+  { label: "License", href: "/license", tone: "hunter" },
 ];
 
 function useIsMounted(): boolean {
@@ -107,6 +108,7 @@ function NavThemeToggle(): ReactNode {
             : "Switch to dark theme"
           : "Toggle theme"
       }
+      data-cursor-tone="hunter"
       className="cursor-target focus-ring relative inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-foreground/8 bg-background/60 transition-colors hover:bg-foreground/5"
     >
       <span aria-hidden="true" className="relative h-4 w-4">
@@ -187,6 +189,7 @@ export function Nav(): ReactNode {
       <div className="mx-auto flex w-full max-w-275 items-center justify-between">
         <Link
           href="/"
+          data-cursor-tone="hunter"
           className="cursor-target group flex items-center gap-2 font-mono text-sm tracking-[-0.02em]"
         >
           <span
@@ -243,6 +246,7 @@ export function Nav(): ReactNode {
                 >
                   <Link
                     href={item.href}
+                    data-cursor-tone={item.tone}
                     aria-current={isActive ? "page" : undefined}
                     className="cursor-target focus-ring relative inline-flex items-center justify-center rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-colors"
                   >

@@ -62,6 +62,7 @@ export default async function ArchivePage(): Promise<ReactNode> {
               <Link
                 key={entry.slug}
                 href={`/archive/${entry.slug}`}
+                data-cursor-tone="chain"
                 className="cursor-target group grid gap-5 py-7 sm:grid-cols-[40px_1fr_auto]"
               >
                 <span className="pt-1 font-mono text-[10px] text-foreground/25">

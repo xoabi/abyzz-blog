@@ -29,6 +29,7 @@ export function Hero(): ReactNode {
           <div className="mt-16 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-2">
             <Link
               href="/operations"
+              data-cursor-tone="spider"
               className="cursor-target side-card side-card--spider group rounded-2xl border border-foreground/10 bg-background/30 p-6"
             >
               <div className="mb-8 flex items-center justify-between">
@@ -55,6 +56,7 @@ export function Hero(): ReactNode {
 
             <Link
               href="/archive"
+              data-cursor-tone="chain"
               className="cursor-target side-card side-card--chain group rounded-2xl border border-foreground/10 bg-background/30 p-6"
             >
               <div className="mb-8 flex items-center justify-between">
@@ -83,6 +85,7 @@ export function Hero(): ReactNode {
           <div className="mt-12 flex items-center gap-5">
             <Link
               href="/license"
+              data-cursor-tone="hunter"
               className="cursor-target font-mono text-xs uppercase tracking-[0.18em] text-foreground/45 transition-colors hover:text-foreground"
             >
               Hunter License →

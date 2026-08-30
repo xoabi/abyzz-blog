@@ -175,14 +175,16 @@ export default function LicensePage(): ReactNode {
         <div className="flex flex-wrap gap-x-8 gap-y-4">
           <Link
             href="/operations"
-            className="font-mono text-xs uppercase tracking-[0.18em] text-foreground/45 transition-colors hover:text-foreground"
+            data-cursor-tone="spider"
+            className="cursor-target font-mono text-xs uppercase tracking-[0.18em] text-foreground/45 transition-colors hover:text-foreground"
           >
             View Operations →
           </Link>
 
           <Link
             href="/projects"
-            className="font-mono text-xs uppercase tracking-[0.18em] text-foreground/45 transition-colors hover:text-foreground"
+            data-cursor-tone="spider"
+            className="cursor-target font-mono text-xs uppercase tracking-[0.18em] text-foreground/45 transition-colors hover:text-foreground"
           >
             View Projects →
           </Link>
