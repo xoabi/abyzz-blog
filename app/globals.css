@@ -336,3 +336,173 @@ html[data-theme-anim="1"]::view-transition-new(root) {
     cursor: none !important;
   }
 }
+
+/* ---------------------------------------------------------
+   Phantom Troupe — Spider presence
+--------------------------------------------------------- */
+
+.spider-presence {
+  position: fixed;
+  top: 10px;
+  left: 82px;
+  z-index: 8;
+
+  display: none;
+
+  width: 150px;
+  height: 350px;
+
+  pointer-events: none;
+
+  color: var(--spider-accent);
+}
+
+@media (min-width: 1100px) {
+  .spider-presence {
+    display: block;
+  }
+}
+
+/*
+ * Thread + spider behave as one hanging object.
+ */
+.spider-presence__rig {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  transform-origin: 50% 0;
+
+  animation: spider-rig-swing 6.8s
+    cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+/*
+ * The silk is curved slightly rather than being
+ * a perfectly rigid vertical line.
+ */
+.spider-presence__silk {
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+
+  width: 52px;
+  height: 232px;
+
+  overflow: visible;
+
+  transform: translateX(-50%);
+
+  animation: spider-silk-flex 3.8s ease-in-out infinite;
+}
+
+.spider-presence__silk path {
+ /* keep everything else */
+  stroke: color-mix(
+    in srgb,
+    currentColor 32%,
+    transparent
+  );
+
+  stroke-width: 1.1;
+  stroke-linecap: round;
+
+  vector-effect: non-scaling-stroke;
+}
+
+/*
+ * Spider sits directly on the end of the silk.
+ */
+.spider-presence__mark {
+  position: absolute;
+
+  top: 214px;
+  left: 50%;
+
+  width: 108px;
+  height: 108px;
+
+  background: currentColor;
+
+  transform: translateX(-50%) rotate(-2deg);
+
+  -webkit-mask-image: url("/hxh/phantom-spider-mask.png");
+  mask-image: url("/hxh/phantom-spider-mask.png");
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  -webkit-mask-size: contain;
+  mask-size: contain;
+
+  opacity: 0.5;
+
+  filter: drop-shadow(
+    0 0 8px
+    color-mix(in srgb, currentColor 16%, transparent)
+  );
+}
+
+.dark .spider-presence__mark {
+  opacity: 0.55;
+}
+
+/*
+ * Main pendulum motion.
+ *
+ * More noticeable than before, but still slow.
+ */
+@keyframes spider-rig-swing {
+  0% {
+    transform: rotate(-2.8deg);
+  }
+
+  20% {
+    transform: rotate(-1.2deg);
+  }
+
+  50% {
+    transform: rotate(3.2deg);
+  }
+
+  72% {
+    transform: rotate(1.5deg);
+  }
+
+  100% {
+    transform: rotate(-2.8deg);
+  }
+}
+
+/*
+ * Very small deformation of the silk.
+ * It should feel flexible, not like rubber.
+ */
+@keyframes spider-silk-flex {
+  0%,
+  100% {
+    transform:
+      translateX(-50%)
+      skewX(-0.6deg)
+      scaleX(0.985);
+  }
+
+  50% {
+    transform:
+      translateX(-50%)
+      skewX(0.9deg)
+      scaleX(1.015);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spider-presence__rig,
+  .spider-presence__silk {
+    animation: none;
+  }
+}
