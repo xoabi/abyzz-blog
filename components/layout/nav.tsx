@@ -76,10 +76,11 @@ function NavThemeToggle(): ReactNode {
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
 
-    const radius = Math.hypot(
-      Math.max(cx, window.innerWidth - cx),
-      Math.max(cy, window.innerHeight - cy)
-    );
+    const radius =
+      Math.hypot(
+        Math.max(cx, window.innerWidth - cx),
+        Math.max(cy, window.innerHeight - cy)
+      ) * 1.08 + 24;
 
     const root = document.documentElement;
 
